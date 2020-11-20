@@ -12,7 +12,7 @@ namespace Colso.Xrm.AttributeEditor.AppCode.AttributeTypes
 {
     abstract class AttributeBase : IAttribute
     {
-        public readonly int LanguageCode = 1033;
+        public int LanguageCode { get; set; } = 2052;
 
         public string DisplayName { get; set; }
         public string Entity { get; set; }
@@ -32,6 +32,8 @@ namespace Colso.Xrm.AttributeEditor.AppCode.AttributeTypes
             Requirement = attribute.RequiredLevel.Value.ToString();
             SchemaName = attribute.SchemaName;
             Description = attribute.Description?.UserLocalizedLabel?.Label;
+            if (attribute.DisplayName?.UserLocalizedLabel == null)
+                LanguageCode = attribute.DisplayName.UserLocalizedLabel.LanguageCode;
 
             LoadAdditionalAttributeMetadata(attribute);
         }

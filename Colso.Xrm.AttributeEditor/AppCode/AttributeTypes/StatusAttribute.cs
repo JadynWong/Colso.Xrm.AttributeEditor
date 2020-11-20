@@ -51,7 +51,8 @@ namespace Colso.Xrm.AttributeEditor.AppCode.AttributeTypes
                         Value = option.Value,
                         Label = option.Label,
                         AttributeLogicalName = LogicalName,
-                        EntityLogicalName = Entity
+                        EntityLogicalName = Entity,
+                        StateCode = option.State.Value
                     };
 
                     service.Execute(request);
